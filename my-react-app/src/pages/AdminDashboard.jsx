@@ -1,88 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import { FaUsers, FaFileAlt, FaSignOutAlt, FaGraduationCap } from "react-icons/fa";
-// import { useNavigate } from "react-router-dom";
-// import API from "./Api";
-
-// const AdminDashboard = () => {
-//   const navigate = useNavigate();
-
-//   const [userCount, setUserCount] = useState(0);
-//   const [applicationCount, setApplicationCount] = useState(0);
-//   const [scholarshipCount, setScholarshipCount] = useState(0); // Placeholder for now
-
-//   const fetchDashboardData = async () => {
-//     try {
-//       const userRes = await API.get("/api/admin/users/count");
-//       const appRes = await API.get("/api/admin/applications/count");
-
-//       setUserCount(userRes.data);
-//       setApplicationCount(appRes.data);
-//     } catch (error) {
-//       console.error("Failed to fetch dashboard data", error);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchDashboardData();
-//   }, []);
-
-//   const handleLogout = () => {
-//     navigate("/AdminLogin");
-//   };
-
-//   return (
-//     <div className="min-h-screen flex bg-gray-100">
-//       <aside className="w-64 bg-blue-800 text-white flex flex-col p-6 space-y-6">
-//         <h1 className="text-3xl font-bold text-center mb-6">🎓 Admin</h1>
-//         <nav className="space-y-4">
-//           <button className="flex items-center gap-2 hover:text-yellow-300">
-//             <FaGraduationCap /> Scholarships
-//           </button>
-//           <button
-//           className="flex items-center gap-2 hover:text-yellow-300"
-//           onClick={() => navigate("/admin/applicants")}>
-//             <FaUsers /> Applicants
-//             </button>
-//              <button
-//           className="flex items-center gap-2 hover:text-yellow-300"
-//           onClick={() => navigate("/admin/ApplicationList")}>
-//             <FaUsers /> Application List
-//             </button>
-         
-//           <button onClick={handleLogout} className="flex items-center gap-2 hover:text-yellow-300">
-//             <FaSignOutAlt /> Logout
-//           </button>
-//         </nav>
-//       </aside>
-
-//       <main className="flex-1 p-10">
-//         <h2 className="text-2xl font-semibold mb-6">Welcome Admin 👋</h2>
-
-//         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//           <div className="bg-white p-6 rounded-xl shadow text-center">
-//             <FaGraduationCap className="text-blue-700 text-3xl mx-auto mb-2" />
-//             <p className="text-xl font-bold">{scholarshipCount}</p>
-//             <p>Scholarships</p>
-//           </div>
-//           <div className="bg-white p-6 rounded-xl shadow text-center">
-//             <FaUsers className="text-green-700 text-3xl mx-auto mb-2" />
-//             <p className="text-xl font-bold">{userCount}</p>
-//             <p>Applicants</p>
-//           </div>
-//           <div className="bg-white p-6 rounded-xl shadow text-center">
-//             <FaFileAlt className="text-purple-700 text-3xl mx-auto mb-2" />
-//             <p className="text-xl font-bold">{applicationCount}</p>
-//             <p>Applications</p>
-//           </div>
-//         </div>
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default AdminDashboard;
-
-
 import React, { useEffect, useState } from "react";
 import {
   FaUsers,
@@ -98,8 +13,7 @@ const AdminDashboard = () => {
 
   const [userCount, setUserCount] = useState(0);
   const [applicationCount, setApplicationCount] = useState(0);
-  const [scholarshipCount, setScholarshipCount] = useState(0); // Future update
-
+  const [scholarshipCount, setScholarshipCount] = useState(0);
   const fetchDashboardData = async () => {
     try {
       const userRes = await API.get("/api/admin/users/count");

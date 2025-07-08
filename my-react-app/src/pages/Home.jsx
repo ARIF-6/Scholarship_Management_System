@@ -79,7 +79,7 @@ const Home = () => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-teal-900 text-white py-6 mt-10">
+      <footer className="bg-teal-600 text-white py-6 mt-10">
         <div className="max-w-7xl mx-auto text-center px-4">
           <p className="text-sm">
             &copy; {new Date().getFullYear()} Scholarship Management System. All rights reserved.

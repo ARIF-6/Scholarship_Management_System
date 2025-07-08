@@ -8,6 +8,8 @@ import {
   FaSchool,
   FaStar,
   FaRegCalendarAlt,
+  FaSearch,
+  FaArrowRight,
 } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -51,7 +53,7 @@ const Apply = () => {
         autoClose: 2000,
       });
       setSelectedProgram(null);
-      setTimeout(() => navigate("/dashboard"), 2200); // Navigate after toast
+      setTimeout(() => navigate("/dashboard"), 2200);
     } catch (err) {
       console.error(err);
       toast.error("❌ Failed to apply.", {
@@ -66,7 +68,7 @@ const Apply = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-teal-200 to-blue-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-cyan-200 to-blue-100 p-6">
       <ToastContainer />
       <h1 className="text-5xl font-extrabold text-center mb-10 text-teal-800 tracking-tight drop-shadow-xl">
         🎓 Apply for a Scholarship
@@ -83,10 +85,46 @@ const Apply = () => {
         />
       </div>
 
-      {/* Search Results */}
+      {/* Empty State */}
       {searchQuery.trim() === "" ? (
-        <div className="text-center text-gray-500 mt-10 text-lg font-medium">
-          🔍 Start typing to find scholarship programs to apply for.
+        <div className="text-center text-gray-700 mt-10 space-y-10">
+
+          {/* Suggested Tags */}
+          <div>
+            <p className="text-lg font-semibold mb-3">Popular Categories:</p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {["Science", "Engineering", "Business", "Technology", "Arts"].map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setSearchQuery(tag)}
+                  className="px-4 py-2 bg-teal-600 text-white rounded-full shadow-md hover:bg-teal-700 transition"
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* How to Apply */}
+          <div className="bg-white/60 p-6 rounded-2xl shadow-md max-w-3xl mx-auto border border-white/40">
+            <h3 className="text-2xl font-bold text-teal-800 mb-4">
+              📝 How to Apply
+            </h3>
+            <ul className="space-y-3 text-gray-800 text-left text-base">
+              <li className="flex items-center gap-3">
+                <FaSearch className="text-teal-600" />
+                <span>Search and select a scholarship program</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <FaArrowRight className="text-teal-600" />
+                <span>Fill in your personal and academic details</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <FaArrowRight className="text-teal-600" />
+                <span>Submit and track your application</span>
+              </li>
+            </ul>
+          </div>
         </div>
       ) : filteredPrograms.length > 0 ? (
         <ul className="max-w-4xl mx-auto divide-y divide-indigo-200 bg-white/60 rounded-3xl shadow-xl overflow-hidden">
@@ -134,7 +172,6 @@ const Apply = () => {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Full Name */}
               <div className="relative">
                 <FaUser className="absolute left-3 top-4 text-teal-600" />
                 <input
@@ -148,7 +185,6 @@ const Apply = () => {
                 />
               </div>
 
-              {/* Email */}
               <div className="relative">
                 <FaEnvelope className="absolute left-3 top-4 text-teal-600" />
                 <input
@@ -162,7 +198,6 @@ const Apply = () => {
                 />
               </div>
 
-              {/* Date of Birth */}
               <div className="relative">
                 <FaRegCalendarAlt className="absolute left-3 top-4 text-teal-600" />
                 <input
@@ -175,7 +210,6 @@ const Apply = () => {
                 />
               </div>
 
-              {/* Institution */}
               <div className="relative">
                 <FaSchool className="absolute left-3 top-4 text-teal-600" />
                 <input
@@ -189,7 +223,6 @@ const Apply = () => {
                 />
               </div>
 
-              {/* GPA */}
               <div className="relative">
                 <FaStar className="absolute left-3 top-4 text-teal-600" />
                 <input
@@ -203,7 +236,6 @@ const Apply = () => {
                 />
               </div>
 
-              {/* Personal Statement */}
               <div className="md:col-span-2">
                 <textarea
                   placeholder="📜 Write your personal statement..."
@@ -228,7 +260,7 @@ const Apply = () => {
                 onClick={handleApply}
                 className="px-6 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-full shadow-lg hover:from-emerald-600 hover:to-teal-700 transition duration-300"
               >
-                 Submit Application
+                Submit Application
               </button>
             </div>
           </div>
