@@ -37,7 +37,7 @@ public class UserController {
             userRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
-            e.printStackTrace();  // 👈print full error
+            e.printStackTrace();
             return ResponseEntity.status(500).body("Delete failed: " + e.getMessage());
         }
     }

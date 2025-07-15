@@ -15,8 +15,10 @@ import ApplicationList from "./pages/ApplicationList";
 import RoleSelection from "./pages/RoleSelection";
 import Navbar from "./assets/components/Navbar";
 import ProtectedRoute from "./assets/components/ProtectedRoute";
-import MyPrograms from "./pages/MyPrograms";
+import NotFound from "./pages/NotFound";
 import AllPrograms from "./pages/AllPrograms";
+import Orientation from "./pages/Orientation";
+{/* <Route path="/orientation" element={<Orientation />} /> */}
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
       <Routes>
       <Route path="/" element={<RoleSelection  />} />
       <Route path="/Home" element={<Home />} />
+      {/* <Route path="*" element={<NotFound />} /> */}
        <Route path="/login" element={<Login />} />
        <Route path="/ScholarshipInfo" element={<ScholarshipInfo />} />
         <Route path="/About" element={<About />} />
@@ -42,7 +45,7 @@ function App() {
         <Route
           path="/apply"
           element={
-            <ProtectedRoute role="USER">
+            <ProtectedRoute allowedRoles={["USER"]}>
               <Apply />
             </ProtectedRoute>
           }
@@ -50,33 +53,45 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute role="USER">
+            <ProtectedRoute allowedRoles={["USER"]}>
               <Dashboard />
             </ProtectedRoute>
           }
         />
-        <Route
-        path="/user/myprograms"
+        {/* <Route
+        path="NotFound"
         element={
-        <ProtectedRoute role="USER">
-          <MyPrograms />
-          </ProtectedRoute>
+        // <ProtectedRoute role="USER">
+          <NotFound/>
+          // </ProtectedRoute>
           }
-           />
+        /> */}
+
+        <Route
+  path="/orientation"
+  element={
+    <ProtectedRoute allowedRoles={["USER"]}>
+      <Orientation />
+    </ProtectedRoute>
+  }
+/>
+
+
+           
 
         {/* Admin routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
           path="/admin/dashboard"
           element={
-            <ProtectedRoute role="ADMIN">
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <AdminDashboard/>
             </ProtectedRoute>
           }
         />
         <Route path="/admin/allprograms"
         element={
-        <ProtectedRoute role="ADMIN">
+        <ProtectedRoute allowedRoles={["ADMIN"]}>
           <AllPrograms />
           </ProtectedRoute>
         }
@@ -85,7 +100,8 @@ function App() {
         <Route
           path="/admin/applicants"
           element={
-            <ProtectedRoute role="ADMIN">
+            // <ProtectedRoute role="ADMIN">
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <Applicants />
             </ProtectedRoute>
           }
@@ -93,13 +109,13 @@ function App() {
         <Route
           path="/admin/applicationlist"
           element={
-            <ProtectedRoute role="ADMIN">
+            <ProtectedRoute allowedRoles={["ADMIN"]}>
               <ApplicationList />
             </ProtectedRoute>
           }
         />
 
-        <Route path="/admin/all-programs" element={<ProtectedRoute role="ADMIN"><AllPrograms /></ProtectedRoute>} />
+        <Route path="/admin/all-programs" element={<ProtectedRoute  allowedRoles={["ADMIN"]}><AllPrograms /></ProtectedRoute>} />
         {/* Default route */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

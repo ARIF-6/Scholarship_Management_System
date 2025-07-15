@@ -12,12 +12,34 @@
 // export default ProtectedRoute;
 
 
+// import { Navigate } from "react-router-dom";
+// import { useAuth, Roles } from "../../AuthContext";
+// const ProtectedRoute = ({ children, allowedRoles }) => {
+//   const { isAuthenticated, role } = useAuth();
 
-// src/components/ProtectedRoute.jsx
+//   if (!isAuthenticated) {
+//     return <Navigate to="/login" replace />;
+//   }
+
+//   if (allowedRoles && !allowedRoles.includes(role)) {
+//     return <Navigate to="/roleselection" replace />;
+//   }
+
+//   return children;
+// };
+
+// export default ProtectedRoute;
+
+
 import { Navigate } from "react-router-dom";
 import { useAuth, Roles } from "../../AuthContext";
+
 const ProtectedRoute = ({ children, allowedRoles }) => {
-  const { isAuthenticated, role } = useAuth();
+  const { isAuthenticated, role, loading } = useAuth();
+
+  if (loading) {
+    return <div className="text-center py-10 text-blue-700 text-lg">Checking credentials...</div>;
+  }
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
