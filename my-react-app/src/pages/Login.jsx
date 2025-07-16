@@ -87,6 +87,9 @@ const Login = () => {
               required
             />
           </div>
+           {/* 🔗 Forgot Password link */}
+           <p className="text-sm text-right text-teal-600 hover:underline cursor-pointer">
+            <a href="/forgot-password">Forgot Password?</a></p>
           <button
             type="submit"
             disabled={loading}
@@ -94,7 +97,7 @@ const Login = () => {
               loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            {loading ? "Logging in..." : "🚀 Login"}
+            {loading ? "Logging in..." : " Login"}
           </button>
         </form>
 

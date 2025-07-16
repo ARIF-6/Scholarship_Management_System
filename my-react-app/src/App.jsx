@@ -15,10 +15,11 @@ import ApplicationList from "./pages/ApplicationList";
 import RoleSelection from "./pages/RoleSelection";
 import Navbar from "./assets/components/Navbar";
 import ProtectedRoute from "./assets/components/ProtectedRoute";
-import NotFound from "./pages/NotFound";
+// import NotFound from "./pages/NotFound";
 import AllPrograms from "./pages/AllPrograms";
 import Orientation from "./pages/Orientation";
-{/* <Route path="/orientation" element={<Orientation />} /> */}
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
       <Routes>
       <Route path="/" element={<RoleSelection  />} />
       <Route path="/Home" element={<Home />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       {/* <Route path="*" element={<NotFound />} /> */}
        <Route path="/login" element={<Login />} />
        <Route path="/ScholarshipInfo" element={<ScholarshipInfo />} />

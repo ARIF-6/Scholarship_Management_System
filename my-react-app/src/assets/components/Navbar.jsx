@@ -9,7 +9,7 @@ const Navbar = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const hideRoutes = ["/", "/login", "/register", "/admin/login"];
+  const hideRoutes = ["/", "/login", "/register","/forgot-password", "/reset-password","/admin/login"];
   if (hideRoutes.includes(location.pathname)) return null;
 
   const handleLogout = () => {

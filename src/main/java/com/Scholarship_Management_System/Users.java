@@ -19,6 +19,9 @@ public class Users {
 
     private String password;
 
+//    kan waxaa ugu daray for forget password
+    private String resetToken;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role = Role.USER;
